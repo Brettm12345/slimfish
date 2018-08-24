@@ -1,40 +1,59 @@
 # User Host Settings
-set -q SLIMFISH_DISPLAY_USER_HOST_INFO;      or set -g SLIMFISH_DISPLAY_USER_HOST_INFO      1
-set -q SLIMFISH_USER_COLOR;                  or set -g SLIMFISH_USER_COLOR                  'green'
-set -q SLIMFISH_USER_ROOT_COLOR;             or set -g SLIMFISH_USER_ROOT_COLOR             'red'
-set -q SLIMFISH_HOST_COLOR;                  or set -g SLIMFISH_HOST_COLOR                  'yellow'
+set -q SLIMFISH_DISPLAY_USER_HOST_INFO
+or set -g SLIMFISH_DISPLAY_USER_HOST_INFO 1
+set -q SLIMFISH_USER_COLOR
+or set -g SLIMFISH_USER_COLOR 'green'
+set -q SLIMFISH_USER_ROOT_COLOR
+or set -g SLIMFISH_USER_ROOT_COLOR 'red'
+set -q SLIMFISH_HOST_COLOR
+or set -g SLIMFISH_HOST_COLOR 'yellow'
 
 # AWS Info Settings
-set -q SLIMFISH_DISPLAY_AWS_INFO;            or set -g SLIMFISH_DISPLAY_AWS_INFO            0
-set -q SLIMFISH_AWS_COLOR;                   or set -g SLIMFISH_AWS_COLOR                   'blue'
+set -q SLIMFISH_DISPLAY_AWS_INFO
+or set -g SLIMFISH_DISPLAY_AWS_INFO 0
+set -q SLIMFISH_AWS_COLOR
+or set -g SLIMFISH_AWS_COLOR 'blue'
 
 # CWD Settings
-set -q SLIMFISH_CWD_COLOR;                   or set -g SLIMFISH_CWD_COLOR                   'cyan'
-set -q SLIMFISH_CWD_ROOT_COLOR;              or set -g SLIMFISH_CWD_ROOT_COLOR              'red'
+set -q SLIMFISH_CWD_COLOR
+or set -g SLIMFISH_CWD_COLOR 'cyan'
+set -q SLIMFISH_CWD_ROOT_COLOR
+or set -g SLIMFISH_CWD_ROOT_COLOR 'red'
 
 # Prompt Symbol Settings
-set -q SLIMFISH_PROMPT_SYMBOL;               or set -g SLIMFISH_PROMPT_SYMBOL               '∙'
-set -q SLIMFISH_PROMPT_SYMBOL_COLOR_READY;   or set -g SLIMFISH_PROMPT_SYMBOL_COLOR_READY   'white'
-set -q SLIMFISH_PROMPT_SYMBOL_COLOR_WORKING; or set -g SLIMFISH_PROMPT_SYMBOL_COLOR_WORKING 'red'
+set -q SLIMFISH_PROMPT_SYMBOL
+or set -g SLIMFISH_PROMPT_SYMBOL '∙'
+set -q SLIMFISH_PROMPT_SYMBOL_COLOR_READY
+or set -g SLIMFISH_PROMPT_SYMBOL_COLOR_READY 'white'
+set -q SLIMFISH_PROMPT_SYMBOL_COLOR_WORKING
+or set -g SLIMFISH_PROMPT_SYMBOL_COLOR_WORKING 'red'
 
 # Exec Time Settings
-set -q SLIMFISH_DISPLAY_EXEC_TIME;           or set -g SLIMFISH_DISPLAY_EXEC_TIME           1
-set -q SLIMFISH_MAX_EXEC_TIME;               or set -g SLIMFISH_MAX_EXEC_TIME               5
-set -q SLIMFISH_EXEC_TIME_COLOR;             or set -g SLIMFISH_EXEC_TIME_COLOR             'yellow'
+set -q SLIMFISH_DISPLAY_EXEC_TIME
+or set -g SLIMFISH_DISPLAY_EXEC_TIME 1
+set -q SLIMFISH_MAX_EXEC_TIME
+or set -g SLIMFISH_MAX_EXEC_TIME 5
+set -q SLIMFISH_EXEC_TIME_COLOR
+or set -g SLIMFISH_EXEC_TIME_COLOR 'yellow'
 
 # Exit Status Settings
-set -q SLIMFISH_DISPLAY_EXIT_STATUS;         or set -g SLIMFISH_DISPLAY_EXIT_STATUS         1
-set -q SLIMFISH_EXIT_STATUS_SYMBOL;          or set -g SLIMFISH_EXIT_STATUS_SYMBOL          '↵'
-set -q SLIMFISH_EXIT_STATUS_COLOR;           or set -g SLIMFISH_EXIT_STATUS_COLOR           'red'
+set -q SLIMFISH_DISPLAY_EXIT_STATUS
+or set -g SLIMFISH_DISPLAY_EXIT_STATUS 1
+set -q SLIMFISH_EXIT_STATUS_SYMBOL
+or set -g SLIMFISH_EXIT_STATUS_SYMBOL '↵'
+set -q SLIMFISH_EXIT_STATUS_COLOR
+or set -g SLIMFISH_EXIT_STATUS_COLOR 'red'
 
 # Git Settings
-set -q SLIMFISH_ENABLE_GIT;                  or set -g SLIMFISH_ENABLE_GIT                  1
+set -q SLIMFISH_ENABLE_GIT
+or set -g SLIMFISH_ENABLE_GIT 1
 
 # Async Settings
-set -q SLIMFISH_ENABLE_ASYNC;                or set -g SLIMFISH_ENABLE_ASYNC                1
+set -q SLIMFISH_ENABLE_ASYNC
+or set -g SLIMFISH_ENABLE_ASYNC 1
 
 
-function slimfish_gitline_async_handler --on-signal INFO
+function slimfish_gitline_async_handler --on-signal USR2
     set -l mypid %self
     set -l value (eval echo "\$prompt_slimfish_gitline_$mypid")
     set -e prompt_slimfish_gitline_$mypid
@@ -129,4 +148,3 @@ function fish_prompt
     set -l prompt_symbol (slimfish_prompt_symbol)
     echo $user_host $cwd $aws_profile $prompt_symbol ''
 end
-
